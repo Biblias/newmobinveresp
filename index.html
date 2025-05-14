@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Imagen Aleatoria</title>
+
+    <!-- Cargar los íconos de Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+            margin: 0;
+        }
+
+        .container {
+            text-align: center;
+            background-color: #7ea2b9;
+            border-radius: 10px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            max-width: 90%;
+            max-height: 90%;
+            font-family: 'Uncial Antiqua', serif;
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+            max-width: 500px;
+            border-radius: 10px;
+        }
+
+        .icon-buttons {
+            margin-top: 20px;
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .icon-btn {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+            font-size: 24px;
+            color: #790e1c;
+            transition: color 0.3s ease;
+        }
+
+        .icon-btn:hover {
+            color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>Versículo Bíblico</h1>
+    <img id="randomImage" src="https://github.com/BIBLIASYESTUDIOS/webversodiario/blob/main/v165.jpg?raw=true" alt="Imagen aleatoria"> <!-- Imagen aleatoria -->
+    <br>
+    <div class="icon-buttons">
+        <a id="downloadBtn" class="icon-btn" download>
+            <i class="fas fa-download"></i> <!-- Icono de descargar -->
+        </a>
+    </div>
+</div>
+ <!-- Enlace a Google Fonts para la fuente bíblica -->
+ <link href="https://fonts.googleapis.com/css2?family=Uncial+Antiqua&display=swap" rel="stylesheet">
+
+ 
+<script>
+    // URLs de imágenes alojadas en tu repositorio de GitHub
+    const imageUrls = [
+'https://github.com/Biblias/newmobinveresp/blob/main/001vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/002vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/003vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/004vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/005vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/006vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/007vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/008vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/009vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/010vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/011vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/012vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/013vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/014vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/015vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/016vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/017vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/018vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/019vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/020vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/021vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/022vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/023vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/024vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/025vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/026vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/027vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/028vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/029vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/030vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/031vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/032vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/033vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/034vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/035vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/036vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/037vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/038vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/039vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/040vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/041vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/042vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/043vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/044vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/045vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/046vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/047vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/048vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/049vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/050vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/051vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/052vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/053vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/054vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/055vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/056vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/057vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/058vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/059vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/060vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/061vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/062vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/063vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/064vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/065vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/066vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/067vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/068vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/069vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/070vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/071vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/072vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/073vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/074vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/075vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/076vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/077vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/078vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/079vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/080vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/081vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/082vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/083vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/084vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/085vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/086vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/087vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/088vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/089vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/090vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/091vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/092vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/093vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/094vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/095vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/096vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/097vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/098vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/099vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/100vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/101vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/102vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/103vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/104vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/105vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/106vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/107vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/108vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/109vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/110vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/111vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/112vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/113vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/114vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/115vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/116vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/117vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/118vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/119vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/120vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/121vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/122vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/123vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/124vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/125vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/126vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/127vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/128vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/129vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/130vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/131vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/132vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/133vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/134vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/135vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/136vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/137vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/138vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/139vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/140vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/141vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/142vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/143vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/144vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/145vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/146vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/147vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/148vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/149vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/150vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/151vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/152vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/153vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/154vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/155vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/156vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/157vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/158vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/159vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/160vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/161vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/162vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/163vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/164vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/165vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/166vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/167vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/168vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/169vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/170vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/171vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/172vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/173vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/174vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/175vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/176vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/177vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/178vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/179vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/180vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/181vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/182vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/183vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/184vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/185vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/186vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/187vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/188vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/189vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/190vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/191vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/192vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/193vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/194vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/195vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/196vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/197vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/198vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/199vers-esp-not.jpg?raw=true',
+'https://github.com/Biblias/newmobinveresp/blob/main/200vers-esp-not.jpg?raw=true',
+    ];
+
+    // Selecciona una imagen aleatoria y la muestra
+    function showRandomImage() {
+        const randomIndex = Math.floor(Math.random() * imageUrls.length);
+        const imageElement = document.getElementById('randomImage');
+        const downloadBtn = document.getElementById('downloadBtn');
+        
+        const selectedImageUrl = imageUrls[randomIndex];
+        
+        // Actualiza la imagen aleatoria mostrada
+        imageElement.src = selectedImageUrl;
+
+        // Actualiza el botón de descarga con el enlace de la imagen
+        downloadBtn.href = selectedImageUrl;
+
+        return selectedImageUrl;
+    }
+
+    // Llamada inicial para mostrar una imagen aleatoria al cargar la página
+    showRandomImage();
+</script>
+
+</body>
+</html>
